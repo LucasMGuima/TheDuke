@@ -5,6 +5,8 @@ class Tile():
         self.imagem = imagem
         self.posicao = tuple()
         self.lado = 0
+        #Direcao: False -> Se move pra baixo / True -> Se move pre cima 
+        self.direcao: bool = False
         self.posicoesPossiveis = list()
     
     def imagem(self):
@@ -20,21 +22,19 @@ class Tile():
         if(self.lado == 0): self.lado = 1
         else: self.lado = 0
 
-    @abc.abstractmethod
+    def __salvarPosicao(self, linha: int, coluna: int):
+        self.posicoesPossiveis.append([linha, coluna])
+
     def mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:
-        """
-            O metodo mover recebe uma tupla representando a posicao no tabuleiro que a peca sera movida,
-            verifica se a posição é valida e aplica a mesma se for
-
-            Parametros:
-                input -> Tupla representando a nova posicao da peca\n
-                ramanhoTabuleiro -> Tamanho do tabuleiro, exemplo 6x6 -> tamanhoTabuleiro = 6
-
-            Retorno:
-                True -> Se a peca foi capaz de se mover pro local\n
-                False -> Se a peca não foi capaz de se mover pro local     
-        """
-        raise "Implementar movimentacao"
+        linha = input[0]
+        coluna = input[1]
+        self.__acharPosicoesPossiveis(tamanhoTabuleiro)
+        print(input)
+        if([linha, coluna] in self.posicoesPossiveis):
+            self.posicao = (linha, coluna)
+            self.mudarLado()
+            return True
+        return False
 
     @abc.abstractmethod
     def informacao(self):

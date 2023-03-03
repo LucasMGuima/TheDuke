@@ -22,17 +22,6 @@ class Duke(tl.Tile):
 
         print(self.posicoesPossiveis)
 
-    def mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:
-        linha = input[0]
-        coluna = input[1]
-        self.__acharPosicoesPossiveis(tamanhoTabuleiro)
-        print(input)
-        if([linha, coluna] in self.posicoesPossiveis):
-            self.posicao = (linha, coluna)
-            self.mudarLado()
-            return True
-        return False
-
     def informacao(self, tamanhoTabuleiro: int):
         self.__acharPosicoesPossiveis(tamanhoTabuleiro)
         print("-> Duke\n    Pode se mover para", self.posicoesPossiveis)
