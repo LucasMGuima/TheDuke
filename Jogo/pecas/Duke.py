@@ -1,4 +1,5 @@
 import models.Tile as tl
+import abc
 
 class Duke(tl.Tile):
     def __init__(self, imagem):

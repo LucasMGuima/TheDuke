@@ -13,6 +13,4 @@ duke.posicao = (0,3)
 
 board.posicionarPeca((0,'A'), duke)
 board.imprime()
-board.posicionarPeca((0,'F'), duke)
-board.imprime()
 
