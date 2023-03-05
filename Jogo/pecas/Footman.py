@@ -5,6 +5,17 @@ class Footman(tl.Tile):
         super().__init__(imagem)
         self.direcao = direcao
 
+    def mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:
+        linha = input[0]
+        coluna = input[1]
+        self.__acharPosicoesPossiveis(tamanhoTabuleiro)
+        print(input)
+        if([linha, coluna] in self.posicoesPossiveis):
+            self.posicao = (linha, coluna)
+            self.mudarLado()
+            return True
+        return False
+
     def __acharPosicoesPossiveis(self, tamanhoTabuleiro: int) -> None:
         self.posicoesPossiveis.clear()
 
