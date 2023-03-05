@@ -67,7 +67,7 @@ class Board():
             linha = posicao[0]
             ultimaPoseTile = peca.posicao
             print(type(peca))
-            if(peca.mover((linha, coluna), self.tamanho)):
+            if(peca.mover((linha, coluna), self)):
                 self.__limpaEspaco(ultimaPoseTile)
                 self.grade[linha][coluna] = peca
                 return True

@@ -1,4 +1,5 @@
 import models.Tile as tl
+import models.Board as bd
 
 class Footman(tl.Tile):
     def __init__(self, imagem, direcao: bool):
@@ -16,7 +17,7 @@ class Footman(tl.Tile):
             return True
         return False
 
-    def __acharPosicoesPossiveis(self, tamanhoTabuleiro: int) -> None:
+    def __acharPosicoesPossiveis(self, ttamanhoTabuleiro: int) -> None:
         self.posicoesPossiveis.clear()
 
         minhaLinha = self.posicao[0]
