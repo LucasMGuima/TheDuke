@@ -2,8 +2,8 @@ import models.Tile as tl
 import abc
 
 class Duke(tl.Tile):
-    def __init__(self, imagem):
-        super().__init__(imagem)
+    def __init__(self, imagem: str, jogador: str):
+        super().__init__(imagem, jogador)
 
     def mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:
         linha = input[0]

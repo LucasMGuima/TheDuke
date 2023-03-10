@@ -4,10 +4,11 @@ import abc
 #IMPLEMENTAR UMA LOGICA PARA O MOVIMENTO DE ATAQUE
 
 class Tile():
-    def __init__(self, imagem):
+    def __init__(self, imagem: str, jogador: str):
         self.imagem = imagem
         self.posicao = tuple()
         self.lado = 0
+        self.jogador = jogador
         #Direcao: False -> Se move pra baixo / True -> Se move pre cima 
         self.direcao: bool = False
         self.posicoesPossiveis = list()

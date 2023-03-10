@@ -2,8 +2,8 @@ import models.Tile as tl
 import models.Board as bd
 
 class Footman(tl.Tile):
-    def __init__(self, imagem, direcao: bool):
-        super().__init__(imagem)
+    def __init__(self, imagem:str, jogador: str, direcao: bool):
+        super().__init__(imagem, jogador)
         self.direcao = direcao
 
     def mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:

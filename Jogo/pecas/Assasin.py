@@ -1,8 +1,8 @@
 import models.Tile as tl
 
 class Assasin(tl.Tile):
-    def __init__(self, imagem, direcao: bool):
-        super().imagem = imagem
+    def __init__(self, imagem: str, jogador: str, direcao: bool):
+        super().__init__(imagem, jogador)
         self.direcao = direcao
 
     def mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:
