@@ -21,10 +21,8 @@ class Board():
         """
         self.grade[posicao[0]][posicao[1]] = tl.Tile("_")
     
-    def __capturarOuParar(posicao: tuple, pecaAMover: tl.Tile, pecaNoLocal: tl.Tile) -> None:
-        if(pecaAMover.jogador == pecaNoLocal.jogador):
-            #As pecas sao do mesmo jogador
-            
+    def __capturar(self, peca: tl.Tile):
+        peca.__del__()
 
     def imprime(self):
         """
@@ -57,7 +55,7 @@ class Board():
 
     def posicionarPeca(self, posicao: tuple, peca: tl.Tile):
         """
-            Coloca uma peca especifica no tabuleiro
+            Coloca/Move uma peca especifica no tabuleiro
 
             Parametros:
                 posicao -> Tupla com a nova posicao da peca \n
@@ -70,6 +68,8 @@ class Board():
         coluna = self.colunas[posicao[1]]
         linha = posicao[0]
 
+        peca.__acharPosicoesPossiveis(self.tamanho)
+
         if(self.posicaoVazia(posicao)):
             #não ha nada na posição
             ultimaPoseTile = peca.posicao
@@ -80,5 +80,11 @@ class Board():
                 return True
             else: return False
         else:
-            #Tem algo na posição
-            
+            pecaNoLocal: tl.Tile = self.grade[linha][coluna]
+            if(peca.jogador != pecaNoLocal.jogador):
+                #Captura a peca do oponente
+                peca.mover((linha, coluna), self)
+                self.__capturar(pecaNoLocal)
+            elif(peca.jogador == pecaNoLocal):
+                #Remove essa movimentação
+                return
