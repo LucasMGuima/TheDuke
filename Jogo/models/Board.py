@@ -15,6 +15,17 @@ class Board():
         for n in range(self.tamanho):
             self.grade[n] = [tl.Tile("_")]*self.tamanho
 
+    def __limpaEspaco(self, posicao: tuple) -> None:
+        """
+            Limpa um espaco especifico do tabuleiro
+        """
+        self.grade[posicao[0]][posicao[1]] = tl.Tile("_")
+    
+    def __capturarOuParar(posicao: tuple, pecaAMover: tl.Tile, pecaNoLocal: tl.Tile) -> None:
+        if(pecaAMover.jogador == pecaNoLocal.jogador):
+            #As pecas sao do mesmo jogador
+            
+
     def imprime(self):
         """
             Imprime a situacao autal do tabuleiro
@@ -25,12 +36,6 @@ class Board():
             for tile in self.grade[linha]: #espaco na linha
                 novaLinha += tile.imagem + " "
             print(novaLinha)
-
-    def __limpaEspaco(self, posicao: tuple) -> None:
-        """
-            Limpa um espaco especifico do tabuleiro
-        """
-        self.grade[posicao[0]][posicao[1]] = tl.Tile("_")
 
     def posicaoVazia(self, posicao: tuple) -> bool:
         """
@@ -60,11 +65,13 @@ class Board():
             
             Retorno:
                 True -> Se foi pocivel colocar a peca no local\n
-                False -> Se nao foi pocivel colocar a peca no local
+                Se não foi pocivel colocar a peça retorna a peça que está no local
         """
+        coluna = self.colunas[posicao[1]]
+        linha = posicao[0]
+
         if(self.posicaoVazia(posicao)):
-            coluna = self.colunas[posicao[1]]
-            linha = posicao[0]
+            #não ha nada na posição
             ultimaPoseTile = peca.posicao
             print(type(peca))
             if(peca.mover((linha, coluna), self)):
@@ -73,4 +80,5 @@ class Board():
                 return True
             else: return False
         else:
-            return False
+            #Tem algo na posição
+            
