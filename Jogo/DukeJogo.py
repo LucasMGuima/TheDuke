@@ -11,8 +11,5 @@ duke.posicao = (0,3)
 
 #print(duke.informacao(6))
 
-if(board.posicionarPeca((0,'A'), duke) == False):
-    
-
-board.imprime()
-
+duke.acharPosicoesPossiveis(board)
+espaco = board.posicionarPeca((0,'A'), duke)

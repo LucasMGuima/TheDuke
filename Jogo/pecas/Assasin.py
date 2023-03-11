@@ -1,22 +1,15 @@
 import models.Tile as tl
+import models.Board as bd
 
 class Assasin(tl.Tile):
     def __init__(self, imagem: str, jogador: str, direcao: bool):
         super().__init__(imagem, jogador)
         self.direcao = direcao
 
-    def mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:
-        linha = input[0]
-        coluna = input[1]
-        self.__acharPosicoesPossiveis(tamanhoTabuleiro)
-        print(input)
-        if([linha, coluna] in self.posicoesPossiveis):
-            self.posicao = (linha, coluna)
-            self.mudarLado()
-            return True
-        return False
+    def acharPosicoesPossiveis(self, tabuleiro: bd.Board) -> bool:
+        tamanhoTabuleiro = tabuleiro.tamanho
+        
 
-    def __acharPosicoesPossiveis(self, tamanhoTabuleiro: int) -> bool:
         self.posicoesPossiveis.clear()
 
         minhaLinha = self.posicao[0]

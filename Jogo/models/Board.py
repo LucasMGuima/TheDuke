@@ -68,8 +68,6 @@ class Board():
         coluna = self.colunas[posicao[1]]
         linha = posicao[0]
 
-        peca.__acharPosicoesPossiveis(self.tamanho)
-
         if(self.posicaoVazia(posicao)):
             #não ha nada na posição
             ultimaPoseTile = peca.posicao

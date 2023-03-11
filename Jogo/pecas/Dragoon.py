@@ -6,19 +6,8 @@ import models.Tile as tl
 class Dragoon(tl.Tile):
     def __init__(self, imagem: str, jogador: str):
         super().__init__(imagem, jogador)
-
-    def mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:
-        linha = input[0]
-        coluna = input[1]
-        self.__acharPosicoesPossiveis(tamanhoTabuleiro)
-        print(input)
-        if([linha, coluna] in self.posicoesPossiveis):
-            self.posicao = (linha, coluna)
-            self.mudarLado()
-            return True
-        return False
     
-    def __acharPosicoesPossiveis(self, tamanhoTabuleiro: int) -> None:
+    def acharPosicoesPossiveis(self, tamanhoTabuleiro: int) -> None:
         self.posicoesPossiveis.clear()
 
         minhaLinha = self.posicao[0]
