@@ -6,7 +6,7 @@ class Footman(tl.Tile):
         super().__init__(imagem, jogador)
         self.direcao = direcao
 
-    def acharPosicoesPossiveis(self, ttamanhoTabuleiro: int) -> None:
+    def acharPosicoesPossiveis(self, tamanhoTabuleiro: int) -> None:
         self.posicoesPossiveis.clear()
 
         minhaLinha = self.posicao[0]

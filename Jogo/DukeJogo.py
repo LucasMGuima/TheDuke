@@ -13,3 +13,4 @@ duke.posicao = (0,3)
 
 duke.acharPosicoesPossiveis(board)
 espaco = board.posicionarPeca((0,'A'), duke)
+board.imprime()

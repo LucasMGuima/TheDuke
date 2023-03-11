@@ -1,13 +1,16 @@
 import models.Tile as tl
+import models.Board as bd
 import abc
 
 class Duke(tl.Tile):
     def __init__(self, imagem: str, jogador: str):
         super().__init__(imagem, jogador)
         
-    def acharPosicoesPossiveis(self, tamanhoTabuleiro: int) -> None:
+    def acharPosicoesPossiveis(self, tabuleiro: bd.Board) -> None:
         #Limpa a lista de posições posiveis
         self.posicoesPossiveis.clear()
+
+        tamanhoTabuleiro = tabuleiro.tamanho
 
         minhaLinha = self.posicao[0]
         minhaColuna = self.posicao[1]

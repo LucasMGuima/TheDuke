@@ -11,15 +11,15 @@ class Board():
             'F': 4,
             'G': 5
         }
-        self.grade = [tl.Tile("_")]*self.tamanho
+        self.grade = [tl.Tile("_", "")]*self.tamanho
         for n in range(self.tamanho):
-            self.grade[n] = [tl.Tile("_")]*self.tamanho
+            self.grade[n] = [tl.Tile("_","")]*self.tamanho
 
     def __limpaEspaco(self, posicao: tuple) -> None:
         """
             Limpa um espaco especifico do tabuleiro
         """
-        self.grade[posicao[0]][posicao[1]] = tl.Tile("_")
+        self.grade[posicao[0]][posicao[1]] = tl.Tile("_", "")
     
     def __capturar(self, peca: tl.Tile):
         peca.__del__()

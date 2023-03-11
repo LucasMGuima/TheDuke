@@ -1,5 +1,4 @@
 import abc
-import models.Board as bd
 
 #TODO
 #IMPLEMENTAR UMA LOGICA PARA O MOVIMENTO DE ATAQUE
@@ -62,7 +61,7 @@ class Tile():
 
         return True
 
-    def __mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:
+    def mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:
         linha = input[0]
         coluna = input[1]
         print(input)
@@ -83,5 +82,5 @@ class Tile():
         return
 
     @abc.abstractmethod
-    def acharPosicoesPossiveis(self, tabuleiro: bd.Board) -> None:
+    def acharPosicoesPossiveis(self, tabuleiro) -> None:
         raise "Implementar a logica de encontrar as posicoes possiveis"
