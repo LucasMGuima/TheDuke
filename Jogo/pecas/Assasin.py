@@ -13,11 +13,11 @@ class Assasin(tl.Tile):
         minhaLinha = self.posicao[0]
         minhaColuna = self.posicao[1]
 
-        if(self.lado == 0):
-            completoDir1 = False
-            completoDir2 = False
-            completoDir3 = False
+        completoDir1 = False
+        completoDir2 = False
+        completoDir3 = False
 
+        if(self.lado == 0):
             for n in range(tamanhoTabuleiro):
                 if(self.direcao):
                     #se move para cima
@@ -76,6 +76,3 @@ class Assasin(tl.Tile):
                         if(minhaColuna+2 <= 5 and not completoDir3): 
                             peca: tl.Tile = tabuleiro.grade[minhaLinha+2][minhaColuna+2]
                             completoDir3 = self.__encotro((minhaLinha+2, minhaColuna+2), peca)
-        
-        elif(self.lado == 1):
-            return

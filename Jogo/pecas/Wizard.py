@@ -1,10 +1,11 @@
 import models.Tile as tl
+import models.Board as bd
 
 class Wizard(tl.Tile):
     def __init__(self, imagem: str, jogador: str):
         super().__init__(imagem, jogador)
 
-    def acharPosicoesPossiveis(self, tamanhoTabuleiro: int) -> None:
+    def acharPosicoesPossiveis(self, tabuleiro: bd.Board) -> None:
         self.posicoesPossiveis.clear()
 
         minhaLinha = self.posicao[0]
@@ -12,14 +13,24 @@ class Wizard(tl.Tile):
 
         if(self.lado == 0):
             #Lado ativo
-            if(minhaLinha-1 >= 0): self.__salvarPosicao(minhaLinha-1, minhaColuna)
-            if(minhaLinha+1 <= 5): self.__salvarPosicao(minhaLinha+1, minhaColuna)
+            if(minhaLinha-1 >= 0):
+                peca: tl.Tile = tabuleiro.grade[minhaLinha-1][minhaColuna]
+                self.__encotro((minhaLinha-1, minhaColuna), peca)
+            if(minhaLinha+1 <= 5): 
+                peca: tl.Tile = tabuleiro.grade[minhaLinha-1][minhaColuna]
+                self.__encotro((minhaLinha-1, minhaColuna), peca)
             
-            if(minhaColuna-1 >= 0): self.__salvarPosicao(minhaLinha, minhaColuna-1)
-            if(minhaColuna+1 <= 5): self.__salvarPosicao(minhaLinha, minhaColuna+1)
+            if(minhaColuna-1 >= 0): 
+                peca: tl.Tile = tabuleiro.grade[minhaLinha][minhaColuna-1]
+                self.__encotro((minhaLinha, minhaColuna-1), peca)
+            if(minhaColuna+1 <= 5): 
+                peca: tl.Tile = tabuleiro.grade[minhaLinha][minhaColuna+1]
+                self.__encotro((minhaLinha, minhaColuna+1), peca)
 
             if(minhaLinha-1 >= 0):
-                if(minhaColuna-1 >= 0): self.__salvarPosicao(minhaLinha-1, minhaColuna-1)
+                if(minhaColuna-1 >= 0): 
+                    peca: tl.Tile = tabuleiro.grade[minhaLinha-1][minhaColuna-1]
+                    self.__encotro((minhaLinha-1, minhaColuna-1), peca)
                 if(minhaColuna+1 <= 5): self.__salvarPosicao(minhaLinha-1, minhaColuna+1)
             if(minhaLinha+1 <= 5):
                 if(minhaColuna-1 >= 0): self.__salvarPosicao(minhaLinha+1, minhaColuna-1)

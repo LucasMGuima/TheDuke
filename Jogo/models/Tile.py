@@ -1,6 +1,5 @@
 import abc
 import models.Board as bd
-import models.Tile as tl
 
 #TODO
 #IMPLEMENTAR UMA LOGICA PARA O MOVIMENTO DE ATAQUE
@@ -28,10 +27,10 @@ class Tile():
         if(self.lado == 0): self.lado = 1
         else: self.lado = 0
 
-    def __aliado(self, peca: tl.Tile) -> bool:
+    def __aliado(self, peca) -> bool:
         return self.jogador == peca.jogador
 
-    def __encotro(self, posicao: tuple , peca: tl.Tile) -> bool:
+    def __encotro(self, posicao: tuple , peca) -> bool:
         """
             Recebe a nova posição e o tile que ela representa,
             se ele estiver vazio ("_") apenas salva a pocivel posição
