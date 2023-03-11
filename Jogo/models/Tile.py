@@ -1,5 +1,6 @@
 import abc
 import models.Board as bd
+import models.Tile as tl
 
 #TODO
 #IMPLEMENTAR UMA LOGICA PARA O MOVIMENTO DE ATAQUE
@@ -13,7 +14,7 @@ class Tile():
         #Direcao: False -> Se move pra baixo / True -> Se move pre cima 
         self.direcao: bool = False
         self.posicoesPossiveis = list()
-    
+
     def imagem(self):
         """
             Retorna a imagem da peca
@@ -26,6 +27,41 @@ class Tile():
         """
         if(self.lado == 0): self.lado = 1
         else: self.lado = 0
+
+    def __aliado(self, peca: tl.Tile) -> bool:
+        return self.jogador == peca.jogador
+
+    def __encotro(self, posicao: tuple , peca: tl.Tile) -> bool:
+        """
+            Recebe a nova posição e o tile que ela representa,
+            se ele estiver vazio ("_") apenas salva a pocivel posição
+            se não verifica se o tile é do jogador ou não e faz a movimentação devida
+            e return true
+
+            ---------
+            Param \n
+            --------
+            posicao -> Tupla da posição a ser checadas\n
+            peca -> Tile encontrado na posição
+
+            ---------
+            Return \n
+            ---------
+            True -> Se encontro um tile\n
+            False -> Se o tile é vazio
+        """
+
+        if(peca.imagem == "_"):
+            self.__salvarPosicao(posicao[0], posicao[1])
+            return False
+
+        aliado = self.__aliado(peca)
+        
+        if(aliado == False):
+            #econtro um peca e não é alidas
+            self.__salvarPosicao(posicao[0], posicao[1])
+
+        return True
 
     def __mover(self, input: tuple, tamanhoTabuleiro: int) -> bool:
         linha = input[0]
