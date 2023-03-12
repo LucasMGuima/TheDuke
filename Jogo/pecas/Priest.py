@@ -12,7 +12,8 @@ class Priest(tl.Tile):
 
         if(self.lado == 0):
             #lado ativo
-            for n in range(tamanhoTabuleiro):
+            for p in range(tamanhoTabuleiro):
+                n = p+1
                 if(minhaLinha - n >= 0):
                     if(minhaColuna - n >= 0): self.__salvarPosicao(minhaLinha-n, minhaColuna-n)
                     if(minhaColuna + n <= 5): self.__salvarPosicao(minhaLinha-n, minhaColuna+n)

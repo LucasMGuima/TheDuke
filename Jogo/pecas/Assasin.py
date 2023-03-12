@@ -52,27 +52,27 @@ class Assasin(tl.Tile):
             for p in range(tamanhoTabuleiro):
                 n = p+2
                 if(self.direcao):
-                    if(minhaLinha+2 <= 5 and not completoDir1): 
-                        peca: tl.Tile = tabuleiro.grade[minhaLinha+2][minhaColuna]
-                        completoDir1 = self.encontro((minhaLinha+2, minhaColuna), peca)
+                    if(minhaLinha+n <= 5 and not completoDir1): 
+                        peca: tl.Tile = tabuleiro.grade[minhaLinha+n][minhaColuna]
+                        completoDir1 = self.encontro((minhaLinha+n, minhaColuna), peca)
 
-                    if(minhaLinha-2 >= 0):
-                        if(minhaColuna-2 >= 0 and not completoDir2):
-                            peca: tl.Tile = tabuleiro.grade[minhaLinha-2][minhaColuna-2]
-                            completoDir2 = self.encontro((minhaLinha-2, minhaColuna-2), peca)
+                    if(minhaLinha-n >= 0):
+                        if(minhaColuna-n >= 0 and not completoDir2):
+                            peca: tl.Tile = tabuleiro.grade[minhaLinha-n][minhaColuna-n]
+                            completoDir2 = self.encontro((minhaLinha-n, minhaColuna-n), peca)
                         
-                        if(minhaColuna+2 <= 5 and not completoDir3):
-                            peca: tl.Tile = tabuleiro.grade[minhaLinha-2][minhaColuna+2]
-                            completoDir3 = self.encontro((minhaLinha-2, minhaColuna+2), peca)
+                        if(minhaColuna+n <= 5 and not completoDir3):
+                            peca: tl.Tile = tabuleiro.grade[minhaLinha-n][minhaColuna+n]
+                            completoDir3 = self.encontro((minhaLinha-n, minhaColuna+n), peca)
                 else:
-                    if(minhaLinha-2 >= 0 and not completoDir1):
-                        peca: tl.Tile = tabuleiro.grade[minhaLinha-2][minhaColuna]
-                        completoDir1 = self.encontro((minhaLinha-2, minhaColuna), peca)
+                    if(minhaLinha-n >= 0 and not completoDir1):
+                        peca: tl.Tile = tabuleiro.grade[minhaLinha-n][minhaColuna]
+                        completoDir1 = self.encontro((minhaLinha-n, minhaColuna), peca)
 
-                    if(minhaLinha+2 <= 5):
-                        if(minhaColuna-2 >= 0 and not completoDir2): 
-                            peca: tl.Tile = tabuleiro.grade[minhaLinha+2][minhaColuna-2]
-                            completoDir2 = self.encontro((minhaLinha+2, minhaColuna-2), peca)
+                    if(minhaLinha+n <= 5):
+                        if(minhaColuna-n >= 0 and not completoDir2): 
+                            peca: tl.Tile = tabuleiro.grade[minhaLinha+n][minhaColuna-n]
+                            completoDir2 = self.encontro((minhaLinha+n, minhaColuna-n), peca)
                         
                         if(minhaColuna+2 <= 5 and not completoDir3): 
                             peca: tl.Tile = tabuleiro.grade[minhaLinha+2][minhaColuna+2]
