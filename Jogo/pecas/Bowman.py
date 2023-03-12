@@ -2,8 +2,8 @@ import models.Tile as tl
 import models.Board as bd
 
 class Bowman(tl.Tile):
-    def __init__(self, imagem):
-        super().__init__(imagem)
+    def __init__(self, imagem: str, jogador: str):
+        super().__init__(imagem, jogador)
 
     
     def acharPosicoesPossiveis(self, tabuleiro: bd.Board) -> None:
