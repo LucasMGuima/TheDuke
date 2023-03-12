@@ -1,4 +1,5 @@
 import models.Tile as tl
+import models.Board as bd
 
 #TODO
 #ATAQUE
@@ -7,7 +8,7 @@ class Champion(tl.Tile):
     def __init__(self, imagem: str, jogador: str):
         super().__init__(imagem, jogador)
 
-    def acharPosicoesPossiveis(self, tamanhoTabuleiro: int) -> None:
+    def acharPosicoesPossiveis(self, tabuleiro: bd.Board) -> None:
         self.posicoesPossiveis.clear()
 
         minhaLinha = self.posicao[0]

@@ -7,9 +7,9 @@ class Board():
             'A': 0,
             'B': 1,
             'C': 2,
-            'E': 3,
-            'F': 4,
-            'G': 5
+            'D': 3,
+            'E': 4,
+            'F': 5
         }
         self.grade = [tl.Tile("_", "")]*self.tamanho
         for n in range(self.tamanho):
@@ -34,6 +34,12 @@ class Board():
             for tile in self.grade[linha]: #espaco na linha
                 novaLinha += tile.imagem + " "
             print(novaLinha)
+
+    def iniciarPeca(self, peca: tl.Tile) -> None:
+        linha = peca.posicao[0]
+        coluna = peca.posicao[1]
+
+        self.grade[linha][coluna] = peca
 
     def posicaoVazia(self, posicao: tuple) -> bool:
         """
@@ -72,7 +78,7 @@ class Board():
             #não ha nada na posição
             ultimaPoseTile = peca.posicao
             print(type(peca))
-            if(peca.mover((linha, coluna), self)):
+            if(peca.mover((linha, coluna), self)): 
                 self.__limpaEspaco(ultimaPoseTile)
                 self.grade[linha][coluna] = peca
                 return True

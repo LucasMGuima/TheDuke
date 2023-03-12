@@ -29,7 +29,7 @@ class Tile():
     def __aliado(self, peca) -> bool:
         return self.jogador == peca.jogador
 
-    def __encotro(self, posicao: tuple , peca) -> bool:
+    def encontro(self, posicao: tuple , peca) -> bool:
         """
             Recebe a nova posição e o tile que ela representa,
             se ele estiver vazio ("_") apenas salva a pocivel posição
