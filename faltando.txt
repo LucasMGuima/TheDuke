@@ -3,10 +3,10 @@ movimentação
 Duke✔
 footman✔
 pikerman✔
-Dragon✔
+Dragoon✔
 Assasin✔
 Champion✔
-Seer
+Seer✔
 Bowman✔
 Oracle
 Marshall
