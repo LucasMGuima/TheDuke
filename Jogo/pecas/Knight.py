@@ -77,4 +77,49 @@ class Knight(tl.Tile):
                         #Percorre o caminho até acabar ou encontrar algo
                         peca = tabuleiro.grade[minhaLinha-p][minhaColuna]
                         encontro = self.encontro((minhaLinha-p, minhaColuna), peca)
-                        if(encontro == False): break
+                        if(encontro): break
+                #Mov na diagonal para traz
+                if(minhaLinha+1 <= 5):
+                    if(minhaColuna-1 >= 0):
+                        peca = tabuleiro.grade[minhaLinha+1][minhaColuna-1]
+                        encontro = self.encontro((minhaLinha+1, minhaColuna-1), peca)
+                        #So move para -2 so sé -1 estiver livre
+                        if(encontro == False and minhaLinha+2 >= 0):
+                            if(minhaColuna-2 >= 0):
+                                peca = tabuleiro.grade[minhaLinha+2][minhaColuna-2]
+                                self.encontro((minhaLinha+2, minhaColuna-2), peca)
+                    if(minhaColuna+1 <= 5):
+                        peca = tabuleiro.grade[minhaLinha+1][minhaColuna+1]
+                        encontro = self.encontro((minhaLinha+1, minhaColuna+1), peca)
+                        #Se mover para +2 so sé +1 estiver livre
+                        if(encontro == False and minhaLinha+2 <= 5):
+                            if(minhaColuna+2 <= 5):
+                                peca = tabuleiro.grade[minhaLinha+2][minhaLinha+2]
+                                self.encontro((minhaLinha+2, minhaColuna+2), peca)
+            else:
+                #Se move para baixo
+                for n in range(tamanhoTabuleiro):
+                    p = n+1
+                    if(minhaLinha+p >= 0):
+                        #Perco o caminho até acabar ou econtrar algo
+                        peca = tabuleiro.grade[minhaLinha+p][minhaColuna]
+                        encontro = self.encontro((minhaLinha+p, minhaColuna), peca)
+                        if(encontro): break
+                #Mov na diagonal para traz
+                if(minhaLinha-1 >= 0):
+                    if(minhaColuna-1 >= 0):
+                        peca = tabuleiro.grade[minhaLinha-1][minhaColuna-1]
+                        encontro = self.encontro((minhaLinha-1, minhaColuna-1), peca)
+                        #So move para -2 so sé -1 estiver livre
+                        if(encontro == False and minhaLinha-2 >= 0):
+                            if(minhaColuna-2 >= 0):
+                                peca = tabuleiro.grade[minhaLinha-2][minhaColuna-2]
+                                self.encontro((minhaLinha-2, minhaColuna-2), peca)
+                    if(minhaColuna+1 <= 5):
+                        peca = tabuleiro.grade[minhaLinha-1][minhaColuna+1]
+                        encontro = self.encontro((minhaLinha-1, minhaColuna+1), peca)
+                        #Se mover para +2 so sé +1 estiver livre
+                        if(encontro == False and minhaLinha-2 >= 0):
+                            if(minhaColuna+2 <= 5):
+                                peca = tabuleiro.grade[minhaLinha-2][minhaLinha+2]
+                                self.encontro((minhaLinha-2, minhaColuna+2), peca)

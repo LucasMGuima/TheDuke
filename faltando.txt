@@ -10,9 +10,8 @@ Seer✔
 Bowman✔
 Marshall✔
 General✔
-Knigth
+Knigth✔
 Wizard✔
 Ranger
 Priest✔
-LongBowman
-❌Duchess
+LongBowman✔

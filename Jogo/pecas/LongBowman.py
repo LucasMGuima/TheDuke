@@ -36,7 +36,7 @@ class LongBowman(tl.Tile):
                 self.encontro((minhaLinha, minhaColuna-1), peca)
 
         elif(self.lado == 1):
-            if(self.direcao):
+            if(self.direcao == False):
                  # diagonal baixo esquerda
                 if(minhaLinha+1 <= tamanhoTabuleiro-1 and minhaColuna-1 >= 0):
                     peca = tabuleiro.grade[minhaLinha+1][minhaColuna-1]
