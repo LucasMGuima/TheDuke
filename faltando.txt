@@ -8,9 +8,8 @@ Assasin✔
 Champion✔
 Seer✔
 Bowman✔
-Oracle
-Marshall
-General
+Marshall✔
+General✔
 Knigth
 Wizard✔
 Ranger
