@@ -15,4 +15,4 @@ Wizard✔
 Ranger
 Priest✔
 LongBowman
-Duchess
+❌Duchess
