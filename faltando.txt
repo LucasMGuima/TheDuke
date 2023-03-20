@@ -1,9 +1,9 @@
-movimentação
+----Movimentação----
 
 Duke✔
 footman✔
 pikerman✔
-Dragoon✔
+Dragoon
 Assasin✔
 Champion✔
 Seer✔
@@ -12,6 +12,18 @@ Marshall✔
 General✔
 Knigth✔
 Wizard✔
-Ranger
 Priest✔
 LongBowman✔
+
+----Ataque----
+
+Bowman✔
+Champion✔
+DragoonacharAlcanceAtaque
+Pikeman
+Longbowman
+
+----Comando----
+
+General
+Marshall

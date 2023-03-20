@@ -57,3 +57,23 @@ class Champion(tl.Tile):
             if(minhaColuna-2 >= 0):
                 peca = tabuleiro.grade[minhaLinha][minhaColuna-2]
                 self.encontro((minhaLinha, minhaColuna-2), peca)
+
+    def acharAlcanceAtaque(self)->None:
+        #Limpa a alcance
+        self.alcanceAtaque.clear()
+
+        minhaLinha = self.posicao[0]
+        minhaColuna = self.posicao[1]
+
+        if(self.lado == 1):
+            #Só ataca no lado não-ativo
+            #Ataque na horizonatal
+            if(minhaColuna-1 >= 0):
+                self.alcanceAtaque.append((minhaLinha, minhaColuna-1))
+            if(minhaColuna+1 <= 5):
+                self.alcanceAtaque.append((minhaLinha, minhaColuna+1))
+            #Atque na vertical
+            if(minhaLinha-1 >= 0):
+                self.alcanceAtaque.append((minhaLinha-1, minhaColuna))
+            if(minhaLinha+1 <= 5):
+                self.alcanceAtaque.append((minhaLinha+1, minhaColuna))

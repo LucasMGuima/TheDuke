@@ -52,6 +52,34 @@ class Bowman(tl.Tile):
                     peca = tabuleiro.grade[minhaLinha-1][minhaColuna]
                     self.encontro((minhaLinha-1, minhaColuna), peca)
 
+    def acharAlcanceAtaque(self)->None:
+        #Limpa a lista de posições de ataque
+        self.alcanceAtaque.clear()
+
+        minhaLinha = self.posicao[0]
+        minhaColuna = self.posicao[1]
+
+        if(self.lado == 1):
+            #Só ataca no lado não-ativo
+            #Depende da direção de movimento
+            if(self.direcao):
+                #Ataca para cima
+                if(minhaLinha-1 >= 0):
+                    if(minhaColuna-1 >= 0):
+                        self.alcanceAtaque.append((minhaLinha-1, minhaColuna-1))
+                    if(minhaColuna+ 1 <= 5):
+                        self.alcanceAtaque.append((minhaLinha-1, minhaColuna+1))
+                if(minhaLinha-2 >= 0):
+                    self.alcanceAtaque.append((minhaLinha-2, minhaColuna))
+            else:
+                #Ataca para baixo
+                if(minhaLinha+1 <= 5):
+                    if(minhaColuna-1 >= 0):
+                        self.alcanceAtaque.append((minhaLinha+1, minhaColuna-1))
+                    if(minhaColuna+ 1 <= 5):
+                        self.alcanceAtaque.append((minhaLinha+1, minhaColuna+1))
+                if(minhaLinha+2 <= 5):
+                    self.alcanceAtaque.append((minhaLinha+2, minhaColuna))
 
     def informacao(self):
         return super().informacao()

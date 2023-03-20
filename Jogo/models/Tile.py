@@ -11,7 +11,9 @@ class Tile():
         self.jogador = jogador
         #Direcao: False -> Se move pra baixo / True -> Se move pre cima 
         self.direcao: bool = False
+
         self.posicoesPossiveis = list()
+        self.alcanceAtaque = list()
 
     def imagem(self):
         """
@@ -80,6 +82,10 @@ class Tile():
             Informa os movimentos pociveis da peca
         """
         return
+
+    @abc.abstractmethod
+    def acharAlcanceAtaque(self)->None:
+        raise "Implmentar a logica de atacar"
 
     @abc.abstractmethod
     def acharPosicoesPossiveis(self, tabuleiro) -> None:
