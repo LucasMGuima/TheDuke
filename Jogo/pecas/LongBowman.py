@@ -46,5 +46,27 @@ class LongBowman(tl.Tile):
                     peca = tabuleiro.grade[minhaLinha+1][minhaColuna+1]
                     self.encontro((minhaLinha+1, minhaColuna+1), peca)
 
+    def acharAlcanceAtaque(self) -> None:
+        #Limpa o alcance antigo do ataque
+        self.alcanceAtaque.clear()
+
+        minhaLinha = self.posicao[0]
+        minhaColuna = self.posicao[1]
+
+        if(self.lado == 1):
+            #Só ataca no estado não-ativo
+            if(self.direcao):
+                #Se move para cima
+                if(minhaLinha-2 >= 0):
+                    self.alcanceAtaque.append((minhaLinha-2, minhaColuna))
+                if(minhaLinha-3 >= 0):
+                    self.alcanceAtaque.append((minhaLinha-3, minhaColuna))
+            else:
+                #Se move para baixo
+                if(minhaLinha+2 <= 5):
+                    self.alcanceAtaque.append((minhaLinha+2, minhaColuna))
+                if(minhaLinha+3 <= 5):
+                    self.alcanceAtaque.append((minhaLinha+3, minhaColuna))
+
     def informacao(self):
         return super().informacao()
