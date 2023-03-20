@@ -27,3 +27,8 @@ Longbowman✔
 
 General
 Marshall
+
+-----A Fazer----
+[]Atacar peça inimiga
+[]Capturar peça inimiga
+[]Lógica de partida/jogo
