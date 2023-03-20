@@ -19,8 +19,8 @@ LongBowman✔
 
 Bowman✔
 Champion✔
-DragoonacharAlcanceAtaque
-Pikeman
+Dragoon✔
+Pikeman✔
 Longbowman
 
 ----Comando----

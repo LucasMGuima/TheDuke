@@ -48,5 +48,29 @@ class Pikeman(tl.Tile):
             else:
                 pass
 
+    def acharAlcanceAtaque(self) -> None:
+        #Limpa os alcances velhos
+        self.alcanceAtaque.clear()
+
+        minhaLinha = self.posicao[0]
+        minhaColuna = self.posicao[1]
+
+        if(self.lado == 1):
+            #Só ataca no estado não ativo
+            if(self.direcao):
+                #Se movimenta pra cima
+                if(minhaLinha-2 >= 0):
+                    if(minhaColuna-1 >= 0):
+                        self.alcanceAtaque.append((minhaLinha-2, minhaColuna-1))
+                    if(minhaColuna+1 <= 5):
+                        self.alcanceAtaque.append((minhaLinha-2, minhaColuna+1))
+            else:
+                #Se move para baixo
+                if(minhaLinha+2 <= 5):
+                    if(minhaColuna-1 >= 0):
+                        self.alcanceAtaque.append((minhaLinha+2, minhaColuna-1))
+                    if(minhaColuna+1 <= 5):
+                        self.alcanceAtaque.append((minhaLinha+2, minhaColuna+1))
+
     def informacao(self):
         return super().informacao()
