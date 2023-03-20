@@ -14,6 +14,8 @@ class Tile():
 
         self.posicoesPossiveis = list()
         self.alcanceAtaque = list()
+        #Comandavel : Lista de peças que são comandveis por esta
+        self.pecasComandaveis = list()
 
     def imagem(self):
         """
@@ -28,7 +30,15 @@ class Tile():
         if(self.lado == 0): self.lado = 1
         else: self.lado = 0
 
+    def comandavel(self, peca) -> None:
+        """
+            Verifica se a peça é comandavel, se for adiciona a lista de comandavel
+        """
+        if(self.__aliado(peca)):
+            self.pecasComandaveis.append(peca)
+
     def __aliado(self, peca) -> bool:
+        if(peca.jogador == ""): return False
         return self.jogador == peca.jogador
 
     def encontro(self, posicao: tuple , peca) -> bool:
@@ -86,6 +96,10 @@ class Tile():
     @abc.abstractmethod
     def acharAlcanceAtaque(self)->None:
         raise "Implmentar a logica de atacar"
+
+    @abc.abstractmethod
+    def regiaoDeComando(self, tabuleiro)->None:
+        raise 'Implementar a função regiaoDeComando'
 
     @abc.abstractmethod
     def acharPosicoesPossiveis(self, tabuleiro) -> None:

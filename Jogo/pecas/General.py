@@ -109,4 +109,23 @@ class General(tl.Tile):
                     if(minhaColuna+1 <= 5):
                         peca = tabuleiro.grade[minhaLinha+2][minhaColuna+1]
                         self.encontro((minhaLinha+2, minhaColuna+1), peca)
+
+    def regiaoDeComando(self, tabuleiro: bd.Board) -> None:
+        #Limpa a lsita de comandaveis
+        self.comandavel.clear()
+
+        minhaLinha = self.posicao[0]
+        minhaColuna = self.posicao[1]
+
+        if(self.lado == 1):
+            #Só comando no estado não-ativo
+            if(minhaColuna-1 >= 0):
+                peca = tabuleiro.grade[minhaLinha][minhaColuna-1]
+                self.comandavel(peca)
+            if(minhaColuna+1 <= 5):
+                peca = tabuleiro.grade[minhaLinha][minhaColuna+1]
+                self.comandavel(peca)
+
+            #Depende da driecao
+            #TODO
                 
