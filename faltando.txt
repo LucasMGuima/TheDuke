@@ -21,7 +21,7 @@ Bowman✔
 Champion✔
 Dragoon✔
 Pikeman✔
-Longbowman
+Longbowman✔
 
 ----Comando----
 
