@@ -112,7 +112,7 @@ class General(tl.Tile):
 
     def regiaoDeComando(self, tabuleiro: bd.Board) -> None:
         #Limpa a lsita de comandaveis
-        self.comandavel.clear()
+        self.pecasComandaveis.clear()
 
         minhaLinha = self.posicao[0]
         minhaColuna = self.posicao[1]
@@ -127,5 +127,25 @@ class General(tl.Tile):
                 self.comandavel(peca)
 
             #Depende da driecao
-            #TODO
-                
+            if(self.direcao):
+                # Se move par cima 
+                if(minhaLinha+1 <= 5):
+                    peca = tabuleiro.grade[minhaLinha+1][minhaColuna]
+                    self.comandavel(peca)
+                    if(minhaColuna-1 >= 0):
+                        peca = tabuleiro.grade[minhaLinha+1][minhaColuna-1]
+                        self.comandavel(peca)
+                    if(minhaColuna+1 <= 5):
+                        peca = tabuleiro.grade[minhaLinha+1][minhaColuna+1]
+                        self.comandavel(peca)
+            else:
+                #Peca se move para baixo
+                if(minhaLinha-1 >= 0):
+                    peca = tabuleiro.grade[minhaLinha-1][minhaColuna]
+                    self.comandavel(peca)
+                    if(minhaColuna-1 >= 0):
+                        peca = tabuleiro.grade[minhaLinha-1][minhaColuna-1]
+                        self.comandavel(peca)
+                    if(minhaColuna+1 <= 5):
+                        peca = tabuleiro.grade[minhaLinha-1][minhaColuna+1]
+                        self.comandavel(peca)

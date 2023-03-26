@@ -25,10 +25,11 @@ Longbowman✔
 
 ----Comando----
 
-General FAZENDO
-Marshall
+General✔
+Marshall✔
 
 -----A Fazer----
 []Atacar peça inimiga
 []Capturar peça inimiga
+[]Lógica de comando
 []Lógica de partida/jogo
