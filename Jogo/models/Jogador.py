@@ -1,0 +1,60 @@
+import pecas.Assasin as Assasin
+import pecas.Bowman as Bowman
+import pecas.Champion as Champion
+import pecas.Dragoon as Dragoon
+import pecas.Duke as Duke
+import pecas.Footman as Footman
+import pecas.General as General
+import pecas.Knight as Knight
+import pecas.LongBowman as LongBowman
+import pecas.Marshall as Marshall
+import pecas.Pikeman as Pikeman
+import pecas.Priest as Priest
+import pecas.Seer as Seer
+import pecas.Wizard as Wizard
+
+import Board as bd
+import Tile as tl
+
+class Jogador():
+    def __init__(self, jogador: str, direcao: bool) -> None:
+        self.nome = jogador
+        self.direcao = direcao
+        
+        #pecas em jogo
+        self.pecas = []
+
+        #inicia o saco de peças
+        self.saco = [
+            #1 Footman
+            Footman.Footman("F", self.nome, self.direcao),
+            #3 Pikeman
+            Pikeman.Pikeman("p", self.nome, self.direcao),
+            Pikeman.Pikeman("p", self.nome, self.direcao),
+            Pikeman.Pikeman("p", self.nome, self.direcao),
+            #Knight
+            Knight.Knight("K", self.nome, self.direcao),
+            #Wizrad
+            Wizard.Wizard("W", self.nome, self.direcao),
+            #Seer
+            Seer.Seer("S", self.nome, self.direcao),
+            #General
+            General.General("G", self.nome, self.direcao),
+            #Priest
+            Priest.Priest("P", self.nome, self.direcao),
+            #Champion
+            Champion.Champion("C", self.nome, self.direcao),
+            #Marshall
+            Marshall.Marshall("M", self.nome, self.direcao),
+            #Bowman
+            Bowman.Bowman("B", self.nome, self.direcao),
+            #Dragoon
+            Dragoon.Dragoon("d", self.nome, self.direcao),
+            #Assasin
+            Assasin.Assasin("A", self.nome, self.direcao),
+            #Longbowman
+            LongBowman.LongBowman("L", self.nome, self.direcao),
+        ]
+
+    def colocar_peca(self, tabuleiro: bd.Board, peca: tl.Tile) -> None:
+        #TODO
