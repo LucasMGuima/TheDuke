@@ -14,43 +14,59 @@ class Bowman(tl.Tile):
         minhaLinha = self.posicao[0]
         minhaColuna = self.posicao[1]
 
-        if(self.lado == 0):
+        if(self.lado == 1):
             #Estado inicial
             if(self.direcao):
                 #Se move pra cima
-                if(minhaLinha-1 >= 0):
+                if(minhaLinha-1 <= 5): 
                     peca = tabuleiro.grade[minhaLinha-1][minhaColuna]
                     self.encontro((minhaLinha-1, minhaColuna), peca)
+                
+            else:
+                #Se move pra baixo
+                #
                 if(minhaLinha+2 <= 5): 
                     peca = tabuleiro.grade[minhaLinha+2][minhaColuna]
                     self.encontro((minhaLinha+2, minhaColuna), peca)
-            else:
-                #Se move pra baixo
-                if(minhaLinha+1 <= 5): 
-                    peca = tabuleiro.grade[minhaLinha+1][minhaColuna]
-                    self.encontro((minhaLinha+1, minhaColuna), peca)
-                if(minhaLinha-2 >= 0):
-                    peca = tabuleiro.grade[minhaLinha-2][minhaColuna]
-                    self.encontro((minhaLinha-2, minhaColuna), peca)
+                
 
+                
+                
+
+#direita
             if(minhaColuna+1 <= 5):
                 peca = tabuleiro.grade[minhaLinha][minhaColuna+1]
                 self.encontro((minhaLinha, minhaColuna+1), peca)
-            if(minhaColuna+2 <= 5): 
-                peca = tabuleiro.grade[minhaLinha][minhaColuna+2]
+            if(minhaColuna+2 <= 5):
+                peca = tabuleiro.grade[minhaLinha][minhaColuna+1]
                 self.encontro((minhaLinha, minhaColuna+2), peca)
-            if(minhaColuna-1 >= 5):
+
+#esquerda
+            if(minhaColuna-1 >= 0):
                 peca = tabuleiro.grade[minhaLinha][minhaColuna-1]
                 self.encontro((minhaLinha, minhaColuna-1), peca)
-            if(minhaColuna-2 >= 5):
-                peca = tabuleiro.grade[minhaLinha][minhaColuna-2]
+            if(minhaColuna-2 >= 0):
+                peca = tabuleiro.grade[minhaLinha][minhaColuna-1]
                 self.encontro((minhaLinha, minhaColuna-2), peca)
-        elif(self.lado == 1):
+           
+#outro lado
+        elif(self.lado == 0):
             if(self.direcao):
                 #Se move pra cima
                 if(minhaLinha-1 >= 0):
                     peca = tabuleiro.grade[minhaLinha-1][minhaColuna]
                     self.encontro((minhaLinha-1, minhaColuna), peca)
+            else:
+                #diagonal baixo direita
+                if((minhaLinha+1 <= 5) & (minhaColuna+1 <= 5)):
+                    peca = tabuleiro.grade[minhaLinha+1][minhaColuna+1]
+                    self.encontro((minhaLinha+1, minhaColuna+1), peca)
+#esquerda
+                if((minhaLinha+1 >= 0) & (minhaColuna-1 >= 0)):
+                    peca = tabuleiro.grade[minhaLinha+1][minhaColuna-1]
+                    self.encontro((minhaLinha+1, minhaColuna-1), peca)
+        print(self.posicoesPossiveis)
+        
 
     def acharAlcanceAtaque(self)->None:
         #Limpa a lista de posições de ataque
