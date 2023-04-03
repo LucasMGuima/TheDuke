@@ -21,6 +21,9 @@ class Jogador():
         self.nome = jogador
         self.direcao = direcao
         
+        #Duke do jogador
+        self.Duke
+
         #pecas em jogo
         self.pecas = []
 
@@ -56,5 +59,39 @@ class Jogador():
             LongBowman.LongBowman("L", self.nome, self.direcao),
         ]
 
-    def colocar_peca(self, tabuleiro: bd.Board, peca: tl.Tile) -> None:
-        #TODO
+    def colocar_duke(self, tabuleiro: bd.Board, peca: Duke.Duke) -> None:
+        if(self.direcao):
+            #Começa em baixo, logo pode ser colocado nos tiles (5,2) e (5,3)
+            print("Escolha onde o Duke ira ser colocado: ")
+            print("1. Linha 5, Coluna 2")
+            print("2. Linha 5, Coluna 3")
+            op = int(input("Entre com o número da opção"))
+            while(op != 1 and op != 2):
+                print("---------OPÇÃO INVALIDA----------")
+                op = int(input("ENTRE COM UMA OPÇÃO VALIDA"))
+
+            if(op == 1):
+                peca.posicao = (5,2)
+            if(op == 2):
+                peca.posicao = (5,3)
+            tabuleiro.iniciarPeca(peca)  
+        else:
+            #Começa em cima, logo pode ser colocado nos tiles (0,2) e (0,3)
+            print("Escolha onde o Duke ira ser colocado: ")
+            print("1. Linha 0, Coluna 2")
+            print("2. Linha 0, Coluna 3")
+            op = int(input("Entre com o número da opção"))
+            while(op != 1 and op != 2):
+                print("---------OPÇÃO INVALIDA----------")
+                op = int(input("ENTRE COM UMA OPÇÃO VALIDA"))
+
+            if(op == 1):
+                peca.posicao = (0,2)
+            if(op == 2):
+                peca.posicao = (0,3)
+            tabuleiro.iniciarPeca(peca)
+
+        self.Duke = peca
+    
+    def colocar_peca(self, tabuleiro:bd.Board, peca:tl.Tile, posicao: tuple) -> bool:
+        return True
