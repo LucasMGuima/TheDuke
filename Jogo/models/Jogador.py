@@ -94,4 +94,37 @@ class Jogador():
         self.Duke = peca
     
     def colocar_peca(self, tabuleiro:bd.Board, peca:tl.Tile, posicao: tuple) -> bool:
+        dukeLinha = self.Duke.posicao[0]
+        dukeColuna = self.Duke.posicao[1]
+
+        colocarLinha = posicao[0]
+        colocarColuna = posicao[1]
+
+        #verifica se a posicao foi selecionada da peca do duke direita 
+        if((dukeLinha+1 == colocarLinha) & (dukeColuna == colocarColuna)):
+            if(tabuleiro.posicionarPeca(posicao,peca)):
+                print(f"Peca posicionada: {posicao}")
+            
+            
+                #esquerda
+        elif((dukeLinha-1 == colocarLinha) & (dukeColuna == colocarColuna)):
+            if(tabuleiro.posicionarPeca(posicao,peca)):
+                print(f"Peca posicionada: {posicao}")
+            
+
+                #baixo
+        elif((dukeColuna+1 == colocarColuna) & (dukeLinha == colocarLinha)):
+            if(tabuleiro.posicionarPeca(posicao,peca)):
+                print(f"Peca posicionada: {posicao}")
+            
+        elif((dukeColuna-1 == colocarColuna) & (dukeLinha == colocarLinha)):
+            if(tabuleiro.posicionarPeca(posicao,peca)):
+                print(f"Peca posicionada: {posicao}")
+        else:
+            print("Não foi possivel colocar a peca")
+
+            return False
+
+
+
         return True
