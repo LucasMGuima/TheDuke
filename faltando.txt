@@ -28,6 +28,9 @@ Longbowman✔
 General✔
 Marshall✔
 
+------jogador---
+colocar peca ✔ ainda precisa testar
+
 -----A Fazer----
 []Atacar peça inimiga
 []Capturar peça inimiga
