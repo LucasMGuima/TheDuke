@@ -104,27 +104,37 @@ class Jogador():
         if((dukeLinha+1 == colocarLinha) & (dukeColuna == colocarColuna)):
             if(tabuleiro.posicionarPeca(posicao,peca)):
                 print(f"Peca posicionada: {posicao}")
-            
-            
                 #esquerda
         elif((dukeLinha-1 == colocarLinha) & (dukeColuna == colocarColuna)):
             if(tabuleiro.posicionarPeca(posicao,peca)):
-                print(f"Peca posicionada: {posicao}")
-            
-
+                print(f"Peca posicionada: {posicao}")  
                 #baixo
         elif((dukeColuna+1 == colocarColuna) & (dukeLinha == colocarLinha)):
             if(tabuleiro.posicionarPeca(posicao,peca)):
                 print(f"Peca posicionada: {posicao}")
-            
         elif((dukeColuna-1 == colocarColuna) & (dukeLinha == colocarLinha)):
             if(tabuleiro.posicionarPeca(posicao,peca)):
                 print(f"Peca posicionada: {posicao}")
         else:
             print("Não foi possivel colocar a peca")
-
             return False
 
-
-
+        #Salva a peca na lista de pecas ativas
+        self.__salvarPeca(peca)
         return True
+
+    def moverPeca(self, tabuleiro:bd.Board) -> bool:
+        """
+            Permite ao jogador escolher uma peca para mover, se a peça foi movida com sucesso retona True se não retorna False.
+            Se a peca terminar a posiçao sobre uma peca inimiga, ela é capiturada
+        """
+        #Mostra as pecas que o jogador tem em jogo
+        cont = 0
+        for peca in self.pecas:
+            print(cont + ": " + type(peca))
+
+        return False
+
+    def __salvarPeca(self, peca:tl.Tile) -> None:
+        self.pecas.append(peca)
+        return
