@@ -132,8 +132,36 @@ class Jogador():
         cont = 0
         for peca in self.pecas:
             print(cont + ": " + type(peca))
+            cont += 1
 
-        return False
+        peca: tl.Tile
+        #Escolhe a peca, repete se o valor entrado não foi valido
+        while True:
+            entrada = input("Entre com o numero da peca escolhida: ")
+            try:
+                num_entrada = int(entrada)
+                peca = self.peca[num_entrada]
+                break
+            except:
+                print("O valor entrado não é valido")
+
+        peca.acharPosicoesPossiveis()
+        cont = 0
+        for posicao in peca.posicoesPossiveis:
+            print(cont +": "+ posicao)
+            cont += 1
+
+        posicao: tuple
+        while True:
+            entrada = input("Entre com o numero da posicao escolhida")
+            try:
+                num_entrada = int(entrada)
+                posicao = peca.posicoesPossiveis[num_entrada]
+                break
+            except:
+                print("O valor entrado não é valido")
+    
+        return peca.mover(posicao, tabuleiro)
 
     def __salvarPeca(self, peca:tl.Tile) -> None:
         self.pecas.append(peca)
