@@ -22,7 +22,9 @@ class Board():
         self.grade[posicao[0]][posicao[1]] = tl.Tile("_", "")
     
     def __capturar(self, peca: tl.Tile):
-        peca.__del__()
+        oponente = peca.jogador
+        oponente.pecas.remove(peca)
+        return
 
     def imprime(self):
         """
@@ -85,10 +87,10 @@ class Board():
             else: return False
         else:
             pecaNoLocal: tl.Tile = self.grade[linha][coluna]
-            if(peca.jogador != pecaNoLocal.jogador):
+            if(peca.jogador.nome != pecaNoLocal.jogador.nome):
                 #Captura a peca do oponente
                 peca.mover((linha, coluna), self)
                 self.__capturar(pecaNoLocal)
-            elif(peca.jogador == pecaNoLocal):
+            elif(peca.jogador.nome == pecaNoLocal.jogador.nome):
                 #Remove essa movimentação
                 return

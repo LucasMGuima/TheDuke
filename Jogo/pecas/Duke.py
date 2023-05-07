@@ -3,7 +3,7 @@ import models.Board as bd
 import abc
 
 class Duke(tl.Tile):
-    def __init__(self, imagem: str, jogador: str):
+    def __init__(self, imagem: str, jogador):
         super().__init__(imagem, jogador)
         
     def acharPosicoesPossiveis(self, tabuleiro: bd.Board) -> None:

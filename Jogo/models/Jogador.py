@@ -16,6 +16,10 @@ import pecas.Wizard as Wizard
 import Board as bd
 import Tile as tl
 
+from random import seed
+from random import randint
+from datetime import datetime
+
 class Jogador():
     def __init__(self, jogador: str, direcao: bool) -> None:
         self.nome = jogador
@@ -30,36 +34,35 @@ class Jogador():
         #inicia o saco de peças
         self.saco = [
             #1 Footman
-            Footman.Footman("F", self.nome, self.direcao),
+            Footman.Footman("F", self, self.direcao),
             #3 Pikeman
-            Pikeman.Pikeman("p", self.nome, self.direcao),
-            Pikeman.Pikeman("p", self.nome, self.direcao),
-            Pikeman.Pikeman("p", self.nome, self.direcao),
+            Pikeman.Pikeman("p", self, self.direcao),
             #Knight
-            Knight.Knight("K", self.nome, self.direcao),
+            Knight.Knight("K", self, self.direcao),
             #Wizrad
-            Wizard.Wizard("W", self.nome, self.direcao),
+            Wizard.Wizard("W", self, self.direcao),
             #Seer
-            Seer.Seer("S", self.nome, self.direcao),
+            Seer.Seer("S", self, self.direcao),
             #General
-            General.General("G", self.nome, self.direcao),
+            General.General("G", self, self.direcao),
             #Priest
-            Priest.Priest("P", self.nome, self.direcao),
+            Priest.Priest("P", self, self.direcao),
             #Champion
-            Champion.Champion("C", self.nome, self.direcao),
+            Champion.Champion("C", self, self.direcao),
             #Marshall
-            Marshall.Marshall("M", self.nome, self.direcao),
+            Marshall.Marshall("M", self, self.direcao),
             #Bowman
-            Bowman.Bowman("B", self.nome, self.direcao),
+            Bowman.Bowman("B", self, self.direcao),
             #Dragoon
-            Dragoon.Dragoon("d", self.nome, self.direcao),
+            Dragoon.Dragoon("d", self, self.direcao),
             #Assasin
-            Assasin.Assasin("A", self.nome, self.direcao),
+            Assasin.Assasin("A", self, self.direcao),
             #Longbowman
-            LongBowman.LongBowman("L", self.nome, self.direcao),
+            LongBowman.LongBowman("L", self, self.direcao),
         ]
 
-    def colocar_duke(self, tabuleiro: bd.Board, peca: Duke.Duke) -> None:
+    def colocar_duke(self, tabuleiro: bd.Board) -> None:
+        peca = Duke.Duke("D", self)
         if(self.direcao):
             #Começa em baixo, logo pode ser colocado nos tiles (5,2) e (5,3)
             print("Escolha onde o Duke ira ser colocado: ")
@@ -162,6 +165,60 @@ class Jogador():
                 print("O valor entrado não é valido")
     
         return peca.mover(posicao, tabuleiro)
+
+    def __tirarPecaSaco(self) -> tl.Tile:
+        #cria uma seed aleatoria
+        objTime = datetime.now()
+        sec = objTime.second
+        seed(sec)
+
+        #gera um numero aleatorio, com base no tamanho do saco
+        qtdPecas = len(self.saco)+1
+        rand_num = randint(0, qtdPecas)
+
+        #pega a peca
+        peca = self.saco.pop(rand_num)
+        return peca
+
+    def novaPeca(self, tabuleiro:bd.Board) -> None:
+        nova_peca = self.__tirarPecaSaco()
+        
+        #entrar com o lado do Duke prar se colocar a peca
+        posicoes = []
+        lados = []
+
+        duke_posicoes = self.Duke.posicao
+        duke_x = duke_posicoes[0]
+        duke_y = duke_posicoes[1]
+
+        #esquerda do duke
+        if(duke_x - 1 >= 0):
+            posicoes.append((duke_x-1, duke_y))
+            lados.append('Esquerda')
+        #direita do duke
+        if(duke_x + 1 <= tabuleiro.tamanho):
+            posicoes.append((duke_x+1, duke_y))
+            lados.append('Direita')
+        #cima do duke
+        if(duke_y - 1 >= 0):
+            posicoes.append((duke_x, duke_y-1))
+            lados.append('Cima')
+        #abaixo do duke
+        if(duke_y + 1 <= tabuleiro.tamanho):
+            posicoes.append((duke_x, duke_y + 1))
+            lados.append('Baixo')
+
+        #Escolher o lado de movimento
+        print("Esolha onde colocar a nova peça: \n")
+        cont = 0
+        for lado in lados:
+            print(cont + " - " + lado)
+            cont += 1
+        op = input("Entre com o numero da direção")
+
+        
+
+        self.colocar_peca(tabuleiro, nova_peca)
 
     def __salvarPeca(self, peca:tl.Tile) -> None:
         self.pecas.append(peca)

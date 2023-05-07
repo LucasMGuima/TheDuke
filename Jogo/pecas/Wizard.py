@@ -2,7 +2,7 @@ import models.Tile as tl
 import models.Board as bd
 
 class Wizard(tl.Tile):
-    def __init__(self, imagem: str, jogador: str):
+    def __init__(self, imagem: str, jogador):
         super().__init__(imagem, jogador)
 
     def acharPosicoesPossiveis(self, tabuleiro: bd.Board) -> None:

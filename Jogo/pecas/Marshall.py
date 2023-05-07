@@ -2,7 +2,7 @@ import models.Tile as tl
 import models.Board as bd
 
 class Marshall(tl.Tile):
-    def __init__(self, imagem: str, jogador: str, direcao: bool):
+    def __init__(self, imagem: str, jogador, direcao: bool):
         super().__init__(imagem, jogador)
         self.direcao = direcao
 
