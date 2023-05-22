@@ -216,9 +216,9 @@ class Jogador():
             cont += 1
         op = input("Entre com o numero da direção")
 
-        
+        direcao = posicoes[op]
 
-        self.colocar_peca(tabuleiro, nova_peca)
+        self.colocar_peca(tabuleiro, nova_peca, direcao)
 
     def __salvarPeca(self, peca:tl.Tile) -> None:
         self.pecas.append(peca)
