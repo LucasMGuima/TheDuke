@@ -1,4 +1,4 @@
-import models.Tile as tl
+import Tile as tl
 
 class Board():
     def __init__(self, tamanho):

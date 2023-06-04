@@ -1,13 +1,13 @@
 import models.Board as bd
-from models.Jogador import Jogador as jogador
+import models.Jogador as jg
 from pecas.Pikeman import Pikeman
 from pecas.Duke import Duke
 
-class Jogo():
+class JogoDuke():
     def __init__(self) -> None:
         self.board = bd.Board(6)
-        self.jogador1 = jogador("Jogoadr 1", True)
-        self.jogador2 = jogador("Jogoadr 2", False)
+        self.jogador1 = jg.Jogador("Jogoadr 1", True)
+        self.jogador2 = jg.Jogador("Jogoadr 2", False)
 
     def iniciarJogo(self) -> None:
         # Jogadores colocam o duke no tabuleiro e dois pikeman

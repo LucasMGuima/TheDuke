@@ -1,11 +1,11 @@
 import abc
-from Jogador import Jogador as jogador
+import Jogador as jg
 
 #TODO
 #IMPLEMENTAR UMA LOGICA PARA O MOVIMENTO DE ATAQUE
 
 class Tile():
-    def __init__(self, imagem: str, jogador: jogador):
+    def __init__(self, imagem: str, jogador: jg.Jogador):
         self.imagem = imagem
         self.posicao = tuple()
         self.lado = 0
